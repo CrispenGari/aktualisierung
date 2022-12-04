@@ -1,14 +1,15 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeStackParamList } from "../../params";
+import { HomeStackNavProps, HomeStackParamList } from "../../params";
 import HomeLanding from "./stacks/HomeLanding";
 import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS } from "../../constants";
-import { StatusBar } from "react-native";
+import { StatusBar, TouchableOpacity } from "react-native";
+import ReadNews from "../news/stack/ReadNews";
+import Settings from "../settings/Settings";
 
 const Stack = createStackNavigator<HomeStackParamList>();
-const Home = () => {
+const Home: React.FC<HomeStackNavProps<"HomeLanding">> = ({ navigation }) => {
   return (
     <React.Fragment>
       <StatusBar barStyle={"light-content"} />
@@ -23,6 +24,11 @@ const Home = () => {
                 margin: 5,
                 padding: 10,
               }}
+              onPress={() =>
+                navigation.navigate("HomeSettings", {
+                  parent: "Home",
+                })
+              }
             >
               <AntDesign name="setting" size={24} color="white" />
             </TouchableOpacity>
@@ -36,6 +42,8 @@ const Home = () => {
         }}
       >
         <Stack.Screen name="HomeLanding" component={HomeLanding} />
+        <Stack.Screen name="ReadNews" component={ReadNews} />
+        <Stack.Screen name="HomeSettings" component={Settings} />
       </Stack.Navigator>
     </React.Fragment>
   );

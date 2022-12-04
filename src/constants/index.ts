@@ -17,11 +17,13 @@ export const FONTS = {
   NunitoSansBoldItalic: "NunitoSansBoldItalic",
   NunitoSansExtraBold: "NunitoSansExtraBold",
   NunitoSansExtraBoldItalic: "NunitoSansExtraBoldItalic",
+  NunitoSansRegular: "NunitoSansRegular",
 };
 
 export const Fonts = {
   NunitoSansItalic: require("../../assets/fonts/NunitoSans-Italic.ttf"),
   NunitoSansBlack: require("../../assets/fonts/NunitoSans-Black.ttf"),
+  NunitoSansRegular: require("../../assets/fonts/NunitoSans-Regular.ttf"),
   NunitoSansBlackItalic: require("../../assets/fonts/NunitoSans-BlackItalic.ttf"),
   NunitoSansBold: require("../../assets/fonts/NunitoSans-Bold.ttf"),
   NunitoSansBoldItalic: require("../../assets/fonts/NunitoSans-BoldItalic.ttf"),
