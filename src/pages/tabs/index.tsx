@@ -8,7 +8,7 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 import TabIcon from "../../components/TabIcon/TabIcon";
-import { CryptoCurrency, Home, News, Weather } from "../../screens";
+import { BitCoin, Home, News, Weather } from "../../screens";
 import { COLORS } from "../../constants";
 
 const Tab = createBottomTabNavigator<AppParamList>();
@@ -81,13 +81,13 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="CryptoCurrency"
-        component={CryptoCurrency}
+        name="BitCoin"
+        component={BitCoin}
         options={{
           tabBarIcon: (props) => (
             <TabIcon
               {...props}
-              title="crypto"
+              title="bitcoin"
               Icon={{
                 name: "coins",
                 IconComponent: FontAwesome5,

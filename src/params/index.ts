@@ -7,7 +7,7 @@ export type AppParamList = {
   Home: undefined;
   News: {};
   Weather: undefined;
-  CryptoCurrency: undefined;
+  BitCoin: undefined;
 };
 
 export type AppNavProps<T extends keyof AppParamList> = {
@@ -22,7 +22,7 @@ export type HomeStackParamList = {
   };
   HomeLanding: undefined;
   HomeSettings: {
-    parent: "Home" | "News" | "Weather" | "CryptoCurrency";
+    parent: "Home" | "News" | "Weather" | "BitCoin";
   };
   ReadWeather: undefined;
 };
@@ -38,7 +38,7 @@ export type NewsStackParamList = {
   };
   NewsLanding: undefined;
   NewsSettings: {
-    parent: "Home" | "News" | "Weather";
+    parent: "Home" | "News" | "Weather" | "BitCoin";
   };
 };
 export type NewsStackNavProps<T extends keyof NewsStackParamList> = {
@@ -46,11 +46,23 @@ export type NewsStackNavProps<T extends keyof NewsStackParamList> = {
   route: RouteProp<NewsStackParamList, T>;
 };
 
+//BitCoin Stacks Param List
+export type BitCoinStackParamList = {
+  BitCoinLanding: undefined;
+  BitCoinSettings: {
+    parent: "Home" | "News" | "BitCoin";
+  };
+};
+export type BitCoinStackNavProps<T extends keyof BitCoinStackParamList> = {
+  navigation: StackNavigationProp<BitCoinStackParamList, T>;
+  route: RouteProp<BitCoinStackParamList, T>;
+};
+
 //Weather Stacks Param List
 export type WeatherStackParamList = {
   WeatherLanding: undefined;
   WeatherSettings: {
-    parent: "Home" | "News" | "Weather";
+    parent: "Home" | "News" | "Weather" | "BitCoin";
   };
 };
 export type WeatherStackNavProps<T extends keyof WeatherStackParamList> = {

@@ -3,7 +3,7 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { HomeStackNavProps } from "../../../params";
 import { COLORS, FONTS } from "../../../constants";
-import { WeatherCard } from "../../../components";
+import { BitCoinCard, WeatherCard } from "../../../components";
 import NewsCard from "../../../components/NewsCard/NewsCard";
 import { useLocation } from "../../../hooks";
 import { NEWS_API_API_KEY } from "../../../keys";
@@ -37,7 +37,7 @@ const HomeLanding: React.FC<HomeStackNavProps<"HomeLanding">> = ({
     let mounted: boolean = true;
     const _country: string = (
       location as any
-    )?.apiInfo?._z?.country.toLowerCase();
+    )?.reversed?.isoCountryCode?.toLowerCase();
     if (mounted && !!_country) {
       (async () => {
         const res = await fetch(
@@ -83,7 +83,6 @@ const HomeLanding: React.FC<HomeStackNavProps<"HomeLanding">> = ({
   }, [index, news]);
   return (
     <ScrollView
-      bounces={false}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
       style={{
@@ -94,6 +93,7 @@ const HomeLanding: React.FC<HomeStackNavProps<"HomeLanding">> = ({
     >
       <WeatherCard />
       {!!_new ? <NewsCard _new={_new} navigation={navigation} /> : null}
+      <BitCoinCard />
       <View style={{ height: 140 }} />
     </ScrollView>
   );

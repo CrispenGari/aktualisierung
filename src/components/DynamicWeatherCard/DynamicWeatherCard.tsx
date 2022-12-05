@@ -6,38 +6,10 @@ import {
   ImageBackground,
 } from "react-native";
 import React from "react";
-import { useLocation } from "../../hooks";
 import { COLORS, FONTS } from "../../constants";
 import { FontAwesome5, Feather, FontAwesome } from "@expo/vector-icons";
-import { OPEN_WEATHER_MAP_API_KEY } from "../../keys";
-import * as Location from "expo-location";
 
-const WeatherCard = () => {
-  const { location } = useLocation();
-  const [weather, setWeather] = React.useState<any>();
-
-  React.useEffect(() => {
-    let mounted: boolean = true;
-    if (mounted && !!location) {
-      (async () => {
-        const {
-          coords: { latitude: lat, longitude: lon },
-        } = await Location.getCurrentPositionAsync({});
-        const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${OPEN_WEATHER_MAP_API_KEY}`
-        );
-        const data = await res.json();
-        setWeather(data);
-      })();
-    }
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
-  if (!!!weather?.weather) {
-    return <View />;
-  }
+const DynamicWeatherCard: React.FC<any> = ({ weather, location }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -281,4 +253,4 @@ const WeatherCard = () => {
   );
 };
 
-export default WeatherCard;
+export default DynamicWeatherCard;

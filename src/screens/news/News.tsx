@@ -8,7 +8,9 @@ import { COLORS } from "../../constants";
 import ReadNews from "./stack/ReadNews";
 import Settings from "../settings/Settings";
 const Stack = createStackNavigator<NewsStackParamList>();
-const News: React.FC<NewsStackNavProps<"NewsLanding">> = ({ navigation }) => {
+const News: React.FC<NewsStackNavProps<"NewsLanding"> | any> = ({
+  navigation,
+}) => {
   return (
     <React.Fragment>
       <StatusBar barStyle={"light-content"} />

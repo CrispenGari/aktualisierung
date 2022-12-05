@@ -4,7 +4,7 @@ import { FONTS, COLORS } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { HomeStackNavProps } from "../../params";
 
-const Settings: React.FC<HomeStackNavProps<"HomeSettings">> = ({
+const Settings: React.FC<HomeStackNavProps<"HomeSettings"> | any> = ({
   navigation,
   route: {
     params: { parent },
@@ -40,8 +40,22 @@ const Settings: React.FC<HomeStackNavProps<"HomeSettings">> = ({
     });
   }, []);
   return (
-    <View>
-      <Text>Settings</Text>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+      }}
+    >
+      <Text
+        style={{
+          color: COLORS.darkGray,
+          fontFamily: FONTS.NunitoSansRegular,
+        }}
+      >
+        No settings implemented on this app.
+      </Text>
     </View>
   );
 };

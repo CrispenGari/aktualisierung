@@ -7,7 +7,7 @@ import { StatusBar, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Settings from "../settings/Settings";
 const Stack = createStackNavigator<WeatherStackParamList>();
-const Weather: React.FC<WeatherStackNavProps<"WeatherLanding">> = ({
+const Weather: React.FC<WeatherStackNavProps<"WeatherLanding"> | any> = ({
   navigation,
 }) => {
   return (

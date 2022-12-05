@@ -9,6 +9,7 @@ import { Loading } from "./src/components";
 export default function App() {
   const [loaded] = useFonts(Fonts);
   LogBox.ignoreLogs;
+  LogBox.ignoreAllLogs;
   if (!loaded) {
     return <Loading />;
   }

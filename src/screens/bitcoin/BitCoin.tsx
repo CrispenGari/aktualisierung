@@ -1,22 +1,21 @@
+import { StatusBar, TouchableOpacity } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeStackNavProps, HomeStackParamList } from "../../params";
-import HomeLanding from "./stacks/HomeLanding";
-import { AntDesign } from "@expo/vector-icons";
+import { BitCoinStackNavProps, BitCoinStackParamList } from "../../params";
 import { COLORS } from "../../constants";
-import { StatusBar, TouchableOpacity } from "react-native";
-import ReadNews from "../news/stack/ReadNews";
+import BitCoinLanding from "./stack/BitCoinLanding";
 import Settings from "../settings/Settings";
+import { AntDesign } from "@expo/vector-icons";
 
-const Stack = createStackNavigator<HomeStackParamList>();
-const Home: React.FC<HomeStackNavProps<"HomeLanding"> | any> = ({
+const Stack = createStackNavigator<BitCoinStackParamList>();
+const BitCoin: React.FC<BitCoinStackNavProps<"BitCoinLanding"> | any> = ({
   navigation,
 }) => {
   return (
     <React.Fragment>
       <StatusBar barStyle={"light-content"} />
       <Stack.Navigator
-        initialRouteName="HomeLanding"
+        initialRouteName="BitCoinLanding"
         screenOptions={{
           headerTitleStyle: { display: "none" },
           headerRight: () => (
@@ -26,11 +25,11 @@ const Home: React.FC<HomeStackNavProps<"HomeLanding"> | any> = ({
                 margin: 5,
                 padding: 10,
               }}
-              onPress={() =>
-                navigation.navigate("HomeSettings", {
-                  parent: "Home",
-                })
-              }
+              onPress={() => {
+                navigation.navigate("BitCoinSettings", {
+                  parent: "BitCoin",
+                });
+              }}
             >
               <AntDesign name="setting" size={24} color="white" />
             </TouchableOpacity>
@@ -43,12 +42,11 @@ const Home: React.FC<HomeStackNavProps<"HomeLanding"> | any> = ({
           },
         }}
       >
-        <Stack.Screen name="HomeLanding" component={HomeLanding} />
-        <Stack.Screen name="ReadNews" component={ReadNews} />
-        <Stack.Screen name="HomeSettings" component={Settings} />
+        <Stack.Screen name="BitCoinLanding" component={BitCoinLanding} />
+        <Stack.Screen name="BitCoinSettings" component={Settings} />
       </Stack.Navigator>
     </React.Fragment>
   );
 };
 
-export default Home;
+export default BitCoin;

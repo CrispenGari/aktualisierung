@@ -5,22 +5,27 @@ const useLocation = () => {
   const [location, setLocation] = useState<
     | {
         expo: Location.LocationObject;
-        apiInfo: any;
+        reversed: any;
       }
     | {}
   >({});
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
-      const res = await fetch("https://ipinfo.io/");
-      const data = res.json();
       if (status !== "granted") {
         setLocation({});
         return;
       }
       const location = await Location.getCurrentPositionAsync({});
+      const reversed = await Location.reverseGeocodeAsync(
+        {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        },
+        { useGoogleMaps: false }
+      );
       setLocation({
-        apiInfo: data,
+        reversed: reversed[0],
         expo: location,
       });
     })();
